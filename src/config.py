@@ -14,7 +14,7 @@ ANTHROPIC_MODEL = os.getenv("ANTHROPIC_MODEL", "claude-haiku-4-5")
 
 _temp = os.getenv("TEMPERATURE", "").strip()
 TEMPERATURE: float | None = float(_temp) if _temp else None
-MAX_TOKENS = int(os.getenv("MAX_TOKENS", "400"))
+MAX_TOKENS = int(os.getenv("MAX_TOKENS", "2000"))
 
 def require(value: str | None, name: str) -> str:
     if value is None:
