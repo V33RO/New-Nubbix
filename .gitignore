@@ -1,0 +1,15 @@
+# Credenciales
+.env
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Locales
+.DS_Store
+.idea/
+.vscode/
+
+# Datos generados (el log se genera al correr; ver nota abajo)
+data/metrics.jsonl
