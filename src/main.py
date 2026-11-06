@@ -48,12 +48,15 @@ def main(argv: list[str] | None= None) -> int:
         input_tokens=run.input_tokens, output_tokens=run.output_tokens,
         latency_s=run.latency_s, cost_usd=run.cost_usd,
         attempts=run.attempts, category=run.result.category,
+        blocked_by=run.blocked_by,
     )
 
     print(json.dumps(run.result.model_dump(mode="json"), ensure_ascii=False, indent=2))
 
     if args.verbose:
-        print(f"[{run.provider}/{run.model} · prompt {run.prompt_version} · intentos={run.attempts} · "
+        if run.blocked_by:
+            print(f"[BLOQUEADO por {run.blocked_by}]", file=sys.stderr)
+            print(f"[{run.provider}/{run.model} · prompt {run.prompt_version} · intentos={run.attempts} · "
               f"tokens={run.input_tokens}+{run.output_tokens} · ${run.cost_usd:.6f} · {run.latency_s:.2f}s]",
               file=sys.stderr)
     return 0

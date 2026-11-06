@@ -7,6 +7,8 @@ from src.llm_client import ask_tool
 from src.prompt_loader import load_prompt
 from src.schemas import TriageResult
 
+from src.guardrails import check_input, check_output, safe_fallback
+
 TOOL_NAME = "classify_ticket"
 
 TOOL_SCHEMA = TriageResult.model_json_schema()
@@ -26,6 +28,7 @@ class ClassificationRun:
     output_tokens: int
     cost_usd: float
     latency_s: float
+    blocked_by: str | None = None
 
 
 def _summarize_error(e: ValidationError) -> str:
@@ -45,6 +48,14 @@ def classify(
     if not ticket or not ticket.strip():
         raise InvalidQueryError("La consulta no puede estar vacía.")
 
+    decision = check_input(ticket)
+    if not decision.allowed:
+        return ClassificationRun(
+            result=safe_fallback(), prompt_version=prompt_version, provider="none", model="none",
+            attempts=0, input_tokens=0, output_tokens=0, cost_usd=0.0, latency_s=0.0,
+            blocked_by=f"input:{decision.reason}",
+        )
+    
     prompt = load_prompt(prompt_version)
     user = prompt.build_user(ticket)
 
@@ -69,6 +80,11 @@ def classify(
         if r.args is not None:
             try:
                 result = TriageResult.model_validate(r.args)
+                blocked_by = None
+                out = check_output(result.answer, prompt.system)
+                if not out.allowed:
+                    result = safe_fallback()
+                    blocked_by = f"output:{out.reason}"
                 return ClassificationRun(
                     result=result,
                     prompt_version=prompt.version,
@@ -79,6 +95,7 @@ def classify(
                     output_tokens=totals["output"],
                     cost_usd=totals["cost"],
                     latency_s=totals["latency"],
+                    blocked_by=blocked_by,
                 )
             except ValidationError as e:
                 previous_error = _summarize_error(e)

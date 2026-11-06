@@ -24,6 +24,7 @@ def log_metrics(
     attempts: int = 0,
     category: str | None = None,
     error: str | None = None,
+    blocked_by: str | None = None,
     path: Path = METRICS_PATH,
 ) -> dict:
     """Agrega UNA línea al .jsonl. Nunca reescribe lo anterior."""
@@ -42,6 +43,7 @@ def log_metrics(
         "category": category,
         "ticket_hash": ticket_hash(ticket),
         "error": str(error) if error is not None else None,
+        "blocked_by": blocked_by,
     }
     path.parent.mkdir(parents=True, exist_ok=True)
     with open(path, "a", encoding="utf-8") as f:
