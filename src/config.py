@@ -16,6 +16,8 @@ _temp = os.getenv("TEMPERATURE", "").strip()
 TEMPERATURE: float | None = float(_temp) if _temp else None
 MAX_TOKENS = int(os.getenv("MAX_TOKENS", "2000"))
 
+REASONING_EFFORT = os.getenv("REASONING_EFFORT", "").strip() or None
+
 def require(value: str | None, name: str) -> str:
     if value is None:
         raise ValueError(f"{name} is required but not set in environment variables.")
