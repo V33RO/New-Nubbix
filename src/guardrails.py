@@ -68,7 +68,7 @@ _EMAIL = re.compile(r"[\w.+-]+@[\w-]+\.[\w.-]+")
 _SECRET = re.compile(r"\b(sk-[A-Za-z0-9_-]{16,}|(api[_ -]?key|password|contrasena|token)\s*[:=]\s*\S+)", re.I)
 _CARD = re.compile(r"\b(?:\d[ -]?){13,19}\b")
 
-def _ngrams(text: str, n:int=6) -> set[str]:
+def _ngrams(text: str, n:int=8) -> set[str]:
     words= normalize(text).split()
     return {" ".join(words[i:i + n]) for i in range(len(words) - n + 1)}
 
