@@ -1,0 +1,111 @@
+{
+  "summary": {
+    "prompt_version": "v3",
+    "n_runs": 5,
+    "accuracy": 0.0,
+    "accuracy_by_category": {
+      "billing": 0.0
+    },
+    "accuracy_by_tipo": {
+      "claro": 0.0
+    },
+    "errors": 5,
+    "blocked": 0,
+    "retried": 0,
+    "inconsistent_cases": [],
+    "total_cost_usd": 0.0,
+    "avg_cost_usd": 0.0,
+    "avg_latency_s": 0.0,
+    "top_confusions": [
+      {
+        "expected": "billing",
+        "predicted": null,
+        "count": 5
+      }
+    ],
+    "failed_ids": [
+      "b01",
+      "b02",
+      "b03",
+      "b04",
+      "b05"
+    ]
+  },
+  "rows": [
+    {
+      "id": "b01",
+      "tipo": "claro",
+      "expected": "billing",
+      "predicted": null,
+      "confidence": null,
+      "attempts": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cost_usd": 0.0,
+      "latency_s": 0.0,
+      "blocked_by": null,
+      "error": "TypeError",
+      "correct": false
+    },
+    {
+      "id": "b02",
+      "tipo": "claro",
+      "expected": "billing",
+      "predicted": null,
+      "confidence": null,
+      "attempts": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cost_usd": 0.0,
+      "latency_s": 0.0,
+      "blocked_by": null,
+      "error": "TypeError",
+      "correct": false
+    },
+    {
+      "id": "b03",
+      "tipo": "claro",
+      "expected": "billing",
+      "predicted": null,
+      "confidence": null,
+      "attempts": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cost_usd": 0.0,
+      "latency_s": 0.0,
+      "blocked_by": null,
+      "error": "TypeError",
+      "correct": false
+    },
+    {
+      "id": "b04",
+      "tipo": "claro",
+      "expected": "billing",
+      "predicted": null,
+      "confidence": null,
+      "attempts": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cost_usd": 0.0,
+      "latency_s": 0.0,
+      "blocked_by": null,
+      "error": "TypeError",
+      "correct": false
+    },
+    {
+      "id": "b05",
+      "tipo": "claro",
+      "expected": "billing",
+      "predicted": null,
+      "confidence": null,
+      "attempts": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cost_usd": 0.0,
+      "latency_s": 0.0,
+      "blocked_by": null,
+      "error": "TypeError",
+      "correct": false
+    }
+  ]
+}

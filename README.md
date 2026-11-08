@@ -126,3 +126,43 @@ Por lo tanto dejamos v3 como default, de todas maneras en las pruebas adversaria
 - Limitación: con 100% en v2 y v3 el dataset no las distingue; ningún caso cambió de categoría entre repeticiones.
 
 
+COMPARACION ENTRE PROVEEDORES:
+
+ ok
+
+=== COMPARACIÓN ===
+prompt    accuracy   claros  ambiguos  errores  bloq.  retry     $/caso  lat(s)
+v3          100.0%   100.0%    100.0%        0      0      0   0.000126    1.78
+
+v3: por categoría {'billing': '100%', 'technical': '100%', 'account': '100%', 'other': '100%'}
+   confusiones: []
+   casos fallados: []
+
+Detalle guardado en results/20261108_201603_*.json
+
+>> v3: 40 casos x 3
+   h08 ok
+
+=== COMPARACIÓN ===
+prompt    accuracy   claros  ambiguos  errores  bloq.  retry     $/caso  lat(s)
+v3          100.0%   100.0%    100.0%        0      0      0   0.000293    1.58
+
+v3: por categoría {'billing': '100%', 'technical': '100%', 'account': '100%', 'other': '100%'}
+   confusiones: []
+   casos fallados: []
+
+Detalle guardado en results/20261108_201942_*.json
+(.venv) 
+
+Conclusion:
+
+Empate en accuracy y consistencia. Ningún caso cambió de categoría entre repeticiones, en ninguno de los dos proveedores. Este es un resultado real: la misma abstracción, el mismo prompt y el mismo contrato dan resultados equivalentes con dos proveedores distintos.
+Anthropic cuesta unas 2.3 veces más por caso. Se repite entre la corrida chica ($0.000291) y la completa ($0.000293), así que es estable.
+La latencia no distingue. 1.58 s contra 1.78 s está dentro del ruido de red.
+
+EOF
+results\20261108_201603_default_v3.json | in/caso: 907 | out/caso: 70
+results\20261108_201942_anthropic_v3.json | in/caso: 1912 | out/caso:204
+
+El modelo de Anthropic utiliza mas creditos par ala misma tarea
+

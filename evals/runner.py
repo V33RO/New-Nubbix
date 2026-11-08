@@ -23,10 +23,10 @@ def load_dataset(path: Path) -> list[dict]:
         raise ValueError(f"Casos con categoría esperada inválida: {bad}")
     return cases
 
-def run_case(case: dict, version: str) -> dict:
+def run_case(case: dict, version: str, provider: str) -> dict:
     row = {"id": case["id"], "tipo": case.get("tipo"), "expected": case["expected_category"]}
     try:
-        run = classify(case["ticket"], prompt_version=version)
+        run = classify(case["ticket"], prompt_version=version, provider=provider)
         row.update(
             predicted=run.result.category, confidence=run.result.confidence,
             attempts=run.attempts, input_tokens=run.input_tokens, output_tokens=run.output_tokens,
@@ -76,6 +76,10 @@ def summarize(version: str, rows: list[dict]) -> dict:
         "top_confusions": [{"expected": e, "predicted": p, "count": c} for (e, p), c in confusion.most_common(5)],
         "failed_ids": sorted({r["id"] for r in rows if not r["correct"]}),
     }
+
+def pct(t: dict, key: str, width: int) -> str:
+      return f"{t[key]:>{width}.1%}" if key in t else f"{'n/a':>{width}}"
+
 def main() -> int:
     sys.stdout.reconfigure(encoding="utf-8")
     ap = argparse.ArgumentParser(prog="python -m evals.runner", description="Evalúa versiones de prompt.")
@@ -83,6 +87,7 @@ def main() -> int:
     ap.add_argument("--dataset", type=Path, default=DATASET)
     ap.add_argument("--repeats", type=int, default=1, help="Veces que se corre cada caso (mide consistencia)")
     ap.add_argument("--limit", type=int, default=None, help="Solo los primeros N casos (para probar barato)")
+    ap.add_argument("--provider", default=None, choices=["openai", "anthropic"])
     args = ap.parse_args()
 
     cases = load_dataset(args.dataset)[: args.limit]
@@ -95,11 +100,11 @@ def main() -> int:
         rows = []
         for case in cases:
             for _ in range(args.repeats):
-                rows.append(run_case(case, version))
+               rows.append(run_case(case, version, args.provider))
             print(f"   {case['id']} {'ok' if rows[-1]['correct'] else 'FALLA'}", end="\r")
         s = summarize(version, rows)
         summaries.append(s)
-        (RESULTS_DIR / f"{stamp}_{version}.json").write_text(
+        (RESULTS_DIR / f"{stamp}_{args.provider or 'default'}_{version}.json").write_text(
             json.dumps({"summary": s, "rows": rows}, ensure_ascii=False, indent=2), encoding="utf-8"
         )
 

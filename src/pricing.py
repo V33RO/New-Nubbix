@@ -12,3 +12,4 @@ def calculate_cost(model:str, inputs_tokens: int, outputs_tokens: int) -> float:
 
     p = _PRICING[model]
     return (inputs_tokens / 1_000_000) * p["input"] + (outputs_tokens / 1_000_000) * p["output"]
+
