@@ -59,3 +59,70 @@ Qué se detectó: la paráfrasis pasó el guardrail de entrada.
 Qué decidió el sistema: v3 clasificó como manipulación, respondió neutral y escaló.
 Qué se corrigio: el guardrail de salida tenía un falso positivo por el umbral. Lo ajustaste de 6 a 8 y verificaste con un caso neutral y uno de fuga.
 
+prompt    accuracy   claros  ambiguos  errores  bloq.  retry     $/caso  lat(s)
+v1           96.9%   100.0%     88.9%        0      0      0   0.000096    2.29
+v2          100.0%   100.0%    100.0%        0      0      0   0.000113    1.66
+v3          100.0%   100.0%    100.0%        0      0      0   0.000125    1.87
+
+v1: por categoría {'billing': '100%', 'technical': '88%', 'account': '100%', 'other': '100%'}
+   confusiones: [{'expected': 'technical', 'predicted': 'billing', 'count': 1}]
+   casos fallados: ['t04']
+
+v2: por categoría {'billing': '100%', 'technical': '100%', 'account': '100%', 'other': '100%'}
+   confusiones: []
+   casos fallados: []
+
+v3: por categoría {'billing': '100%', 'technical': '100%', 'account': '100%', 'other': '100%'}
+   confusiones: []
+   casos fallados: []
+
+Detalle guardado en results/20261106_204247_*.json
+(.venv) 
+
+
+>> v1: 40 casos x 3
+   h08 okLLA
+>> v2: 40 casos x 3
+   h08 ok
+>> v3: 40 casos x 3
+   h08 ok
+
+=== COMPARACIÓN ===
+prompt    accuracy   claros  ambiguos  errores  bloq.  retry     $/caso  lat(s)
+v1           97.5%   100.0%     94.1%        0      0      0   0.000094    1.95
+v2          100.0%   100.0%    100.0%        0      0      0   0.000113    2.16
+v3          100.0%   100.0%    100.0%        0      0      0   0.000126    1.88
+
+v1: por categoría {'billing': '100%', 'technical': '90%', 'account': '100%', 'other': '100%'}
+   confusiones: [{'expected': 'technical', 'predicted': 'billing', 'count': 3}]
+   casos fallados: ['t04']
+
+v2: por categoría {'billing': '100%', 'technical': '100%', 'account': '100%', 'other': '100%'}
+   confusiones: []
+   casos fallados: []
+
+v3: por categoría {'billing': '100%', 'technical': '100%', 'account': '100%', 'other': '100%'}
+   confusiones: []
+   casos fallados: []
+
+Detalle guardado en results/20261108_180753_*.json
+(.venv) 
+
+Conclusiones con mas casos:
+v1 falló un solo caso, t04 (“No puedo descargar la factura en PDF, el botón da error”). Lo clasificó como billing y era technical. Es justo la trampa léxica que v2 intenta resolver, así que el dato respalda la hipótesis del changelog.
+Ningún prompt tuvo errores, reintentos ni bloqueos. El contrato Pydantic y el tool calling permanecen estables. Los 0 bloqueos también son un resultado: los guardrails no frenaron ninguno de los 32 tickets legítimos (0 falsos positivos en datos reales).
+v3 no perdió accuracy frente a v2. Las reglas de seguridad no cuestan precisión en tickets normales. Cuestan un 10% más de costo frente a v2 y un 30% frente a v1, v3 no pierde presicion y suma defensa.
+Por lo tanto dejamos v3 como default, de todas maneras en las pruebas adversariales podremos ver mejor la diferencia.
+
+
+## v3
+- Resultado (40 casos x 3 repeticiones): accuracy 100%, 0 bloqueos sobre tickets legítimos, costo medio $0.000126. Sin pérdida de accuracy frente a v2; ~12% más costo.
+
+## v2
+- Resultado (40 casos x 3): accuracy 100% (v1: 97.5%). Corrige t04 (technical vs billing) de forma consistente. Costo medio $0.000113.
+
+## v1
+- Resultado (40 casos x 3): accuracy 97.5%; único fallo t04, las 3 veces (technical clasificado como billing). Costo medio $0.000094.
+- Limitación: con 100% en v2 y v3 el dataset no las distingue; ningún caso cambió de categoría entre repeticiones.
+
+

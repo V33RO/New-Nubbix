@@ -1,0 +1,41 @@
+{"id": "b01", "ticket": "Me cobraron dos veces la suscripción de este mes.", "expected_category": "billing", "tipo": "claro"}
+{"id": "b02", "ticket": "No me llega la factura de agosto, la necesito para mi contador.", "expected_category": "billing", "tipo": "claro"}
+{"id": "b03", "ticket": "Quiero cambiar mi tarjeta de crédito, la anterior venció.", "expected_category": "billing", "tipo": "claro"}
+{"id": "b04", "ticket": "La factura de octubre tiene un monto distinto al del plan que contraté.", "expected_category": "billing", "tipo": "claro"}
+{"id": "b05", "ticket": "Pedí la baja del plan Pro hace un mes y me siguen cobrando.", "expected_category": "billing", "tipo": "claro"}
+{"id": "b06", "ticket": "¿Pueden reintegrarme el mes que no pude usar el sistema por las caídas?", "expected_category": "billing", "tipo": "ambiguo"}
+{"id": "b07", "ticket": "Subió el precio de mi plan y no me avisaron, ¿por qué?", "expected_category": "billing", "tipo": "claro"}
+{"id": "b08", "ticket": "El cobro de la suscripción me aparece rechazado pero la tarjeta tiene saldo.", "expected_category": "billing", "tipo": "ambiguo"}
+{"id": "t01", "ticket": "El dashboard de reportes me tira error 500 desde ayer.", "expected_category": "technical", "tipo": "claro"}
+{"id": "t02", "ticket": "Se me cayó la integración con Mercado Pago, los pagos no se sincronizan desde esta mañana.", "expected_category": "technical", "tipo": "claro"}
+{"id": "t03", "ticket": "El sistema está muy lento, tarda más de un minuto en cargar cada pantalla.", "expected_category": "technical", "tipo": "claro"}
+{"id": "t04", "ticket": "No puedo descargar la factura en PDF, el botón da error.", "expected_category": "technical", "tipo": "ambiguo"}
+{"id": "t05", "ticket": "La app móvil se cierra sola cada vez que abro Inventario.", "expected_category": "technical", "tipo": "claro"}
+{"id": "t06", "ticket": "Los reportes de ventas muestran los datos de ayer y no los de hoy.", "expected_category": "technical", "tipo": "claro"}
+{"id": "t07", "ticket": "Al emitir una factura electrónica el sistema devuelve 'error de conexión con AFIP'.", "expected_category": "technical", "tipo": "ambiguo"}
+{"id": "t08", "ticket": "La integración con Tienda Nube dejó de importar los pedidos nuevos.", "expected_category": "technical", "tipo": "claro"}
+{"id": "a01", "ticket": "Quiero agregar un usuario nuevo con permisos de solo lectura, ¿cómo lo hago?", "expected_category": "account", "tipo": "claro"}
+{"id": "a02", "ticket": "Necesito cambiar el email de administrador de la cuenta, el actual ya no existe en mi empresa.", "expected_category": "account", "tipo": "claro"}
+{"id": "a03", "ticket": "Me olvidé la contraseña y no me llega el correo para recuperarla.", "expected_category": "account", "tipo": "ambiguo"}
+{"id": "a04", "ticket": "Un empleado que renunció todavía tiene acceso a mi cuenta, quiero bloquearlo.", "expected_category": "account", "tipo": "claro"}
+{"id": "a05", "ticket": "Quiero cambiar la razón social de la cuenta porque vendimos la empresa.", "expected_category": "account", "tipo": "ambiguo"}
+{"id": "a06", "ticket": "Mi socio no puede ver el módulo de stock, creo que le faltan permisos.", "expected_category": "account", "tipo": "claro"}
+{"id": "a07", "ticket": "Necesito transferir la titularidad de la cuenta a otra persona.", "expected_category": "account", "tipo": "claro"}
+{"id": "a08", "ticket": "Quiero activar la verificación en dos pasos para todos mis usuarios.", "expected_category": "account", "tipo": "claro"}
+{"id": "o01", "ticket": "¿Tienen algún descuento para clientes que llevan más de 2 años con Nubbix?", "expected_category": "other", "tipo": "ambiguo"}
+{"id": "o02", "ticket": "Hola, quería saber si tienen planes para empresas más grandes, somos 80 empleados.", "expected_category": "other", "tipo": "ambiguo"}
+{"id": "o03", "ticket": "¿Pueden desarrollarnos un módulo a medida para nuestra logística?", "expected_category": "other", "tipo": "claro"}
+{"id": "o04", "ticket": "Sería genial que agreguen un modo oscuro a la aplicación.", "expected_category": "other", "tipo": "claro"}
+{"id": "o05", "ticket": "¿Tienen programa de partners o comisiones para contadores que los recomienden?", "expected_category": "other", "tipo": "claro"}
+{"id": "o06", "ticket": "Quería felicitarlos, el nuevo diseño del sistema está muy bueno.", "expected_category": "other", "tipo": "claro"}
+{"id": "o07", "ticket": "¿Dónde puedo ver los videos de capacitación del sistema?", "expected_category": "other", "tipo": "ambiguo"}
+{"id": "o08", "ticket": "Buenas tardes, ¿cuál es el horario de atención telefónica?", "expected_category": "other", "tipo": "claro"}
+{"id": "h01", "ticket": "No puedo ver mis facturas anteriores, me sale la pantalla en blanco.", "expected_category": "technical", "tipo": "ambiguo"}
+{"id": "h02", "ticket": "Me cobraron un usuario de más porque di de baja a uno y sigue figurando.", "expected_category": "billing", "tipo": "ambiguo"}
+{"id": "h03", "ticket": "No me deja cambiar de plan, aprieto el botón y no pasa nada.", "expected_category": "technical", "tipo": "ambiguo"}
+{"id": "h04", "ticket": "Quiero que mi contador pueda ver solamente las facturas, nada más.", "expected_category": "account", "tipo": "ambiguo"}
+{"id": "h05", "ticket": "Hola, necesito ayuda urgente.", "expected_category": "other", "tipo": "ambiguo"}
+{"id": "h06", "ticket": "My invoice was charged twice this month.", "expected_category": "billing", "tipo": "ambiguo"}
+{"id": "h07", "ticket": "¿Puedo pagar la suscripción en cuotas con Mercado Pago?", "expected_category": "billing", "tipo": "ambiguo"}
+{"id": "h08", "ticket": "Se me bloqueó la cuenta después de equivocarme tres veces con la contraseña.", "expected_category": "account", "tipo": "ambiguo"}
+

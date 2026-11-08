@@ -1,0 +1,99 @@
+{
+  "summary": {
+    "prompt_version": "v1",
+    "n_runs": 5,
+    "accuracy": 1.0,
+    "accuracy_by_category": {
+      "billing": 1.0
+    },
+    "accuracy_by_tipo": {
+      "claro": 1.0
+    },
+    "errors": 0,
+    "blocked": 0,
+    "retried": 0,
+    "inconsistent_cases": [],
+    "total_cost_usd": 0.00047900000000000004,
+    "avg_cost_usd": 9.580000000000001e-05,
+    "avg_latency_s": 2.7623488200013524,
+    "top_confusions": [],
+    "failed_ids": []
+  },
+  "rows": [
+    {
+      "id": "b01",
+      "tipo": "claro",
+      "expected": "billing",
+      "predicted": "billing",
+      "confidence": 0.99,
+      "attempts": 1,
+      "input_tokens": 536,
+      "output_tokens": 80,
+      "cost_usd": 9.36e-05,
+      "latency_s": 3.385977700003423,
+      "blocked_by": null,
+      "error": null,
+      "correct": true
+    },
+    {
+      "id": "b02",
+      "tipo": "claro",
+      "expected": "billing",
+      "predicted": "billing",
+      "confidence": 0.98,
+      "attempts": 1,
+      "input_tokens": 538,
+      "output_tokens": 87,
+      "cost_usd": 9.730000000000001e-05,
+      "latency_s": 3.004915000012261,
+      "blocked_by": null,
+      "error": null,
+      "correct": true
+    },
+    {
+      "id": "b03",
+      "tipo": "claro",
+      "expected": "billing",
+      "predicted": "billing",
+      "confidence": 0.99,
+      "attempts": 1,
+      "input_tokens": 537,
+      "output_tokens": 71,
+      "cost_usd": 8.92e-05,
+      "latency_s": 1.9799254999961704,
+      "blocked_by": null,
+      "error": null,
+      "correct": true
+    },
+    {
+      "id": "b04",
+      "tipo": "claro",
+      "expected": "billing",
+      "predicted": "billing",
+      "confidence": 0.99,
+      "attempts": 1,
+      "input_tokens": 539,
+      "output_tokens": 89,
+      "cost_usd": 9.84e-05,
+      "latency_s": 2.900387599991518,
+      "blocked_by": null,
+      "error": null,
+      "correct": true
+    },
+    {
+      "id": "b05",
+      "tipo": "claro",
+      "expected": "billing",
+      "predicted": "billing",
+      "confidence": 0.98,
+      "attempts": 1,
+      "input_tokens": 540,
+      "output_tokens": 93,
+      "cost_usd": 0.0001005,
+      "latency_s": 2.5405383000033908,
+      "blocked_by": null,
+      "error": null,
+      "correct": true
+    }
+  ]
+}
