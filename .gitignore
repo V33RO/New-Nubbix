@@ -10,6 +10,3 @@ __pycache__/
 .DS_Store
 .idea/
 .vscode/
-
-# Datos generados (el log se genera al correr; ver nota abajo)
-data/metrics.jsonl
